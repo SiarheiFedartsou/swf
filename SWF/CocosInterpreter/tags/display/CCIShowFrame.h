@@ -15,7 +15,7 @@
 
 class CCIShowFrame : public CCIMovieTag{
 public:
-    virtual bool initWithReader(CCIBufferReader *reader,int tagType,int tagLength);
+    CCIShowFrame(CCIBufferReader *reader,int tagType,int tagLength);
 
 };
 

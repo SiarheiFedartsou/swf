@@ -46,9 +46,13 @@ protected:
     int tagLength;
     
 public:
+    virtual bool isCharacter() { return false; };
+    
     int getTagType();
     static CCIMovieTag * next(CCIBufferReader *reader);
-    virtual bool initWithReader(CCIBufferReader *reader,int tagType,int tagLength);
+    
+    
+    CCIMovieTag(CCIBufferReader *reader,int tagType,int tagLength);
     virtual ~CCIMovieTag();
 };
 

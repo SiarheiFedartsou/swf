@@ -14,7 +14,7 @@
 
 class CCIRemoveObject2 : public CCIRemoveObject{
 public:
-    virtual bool initWithReader(CCIBufferReader *reader,int tagType,int tagLength);
+    CCIRemoveObject2(CCIBufferReader *reader,int tagType,int tagLength);
 
 };
 

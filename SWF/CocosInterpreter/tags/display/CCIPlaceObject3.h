@@ -16,7 +16,8 @@
 
 class CCIPlaceObject3 : public CCIPlaceObject2{
 public:
-    virtual bool initWithReader(CCIBufferReader *reader,int tagType,int tagLength);
+    
+    CCIPlaceObject3(CCIBufferReader *reader,int tagType,int tagLength);
     virtual ~CCIPlaceObject3();
     
     

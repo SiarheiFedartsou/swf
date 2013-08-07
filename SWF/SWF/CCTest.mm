@@ -44,7 +44,8 @@
     if (self = [super init]) {
         NSString* s= [[NSBundle mainBundle] pathForResource:@"test" ofType:@"swf"];
         
-        movie = CCIMovie::decodeFromFile([s UTF8String]);
+        movie = new CCIMovie([s UTF8String]);
+        movie->nextFrame();
         
         vgCreateContextMNK(320, 480, VG_RENDERING_BACKEND_TYPE_OPENGLES20);
         
@@ -89,8 +90,8 @@
 
 - (void) draw
 {
-    CCIDefineShape4* shape = (CCIDefineShape4*)movie->tags[3];
-    shape->draw();
+   // CCIDefineShape4* shape = (CCIDefineShape4*)movie->tags[3];
+  //  shape->draw();
 //    VGfloat x[9];
 //    
 //    vgGetMatrix(x);

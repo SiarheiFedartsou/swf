@@ -16,27 +16,42 @@
 
 #include "CCIMovieHeader.h"
 #include "CCIFileAttributes.h"
+
+#include "CCIDrawable.h"
 //#include "CCDictionary.h"
+#include "CCIDisplayList.h"
+
+#include <map>
 
 
 
-
-class CCIMovie/* : public CCObject*/{
+class CCIMovie : public CCIDrawable/* : public CCObject*/{
 public:
-    static CCIMovie *decodeFromFile(std::string filename);
+    CCIMovie(std::string filename);
     std::vector<CCIMovieTag *> getTags();
     CCIMovieHeader * getHeader();
  //   CCDictionary * getFrameLabels();
     static void cleanup();
     
     virtual ~CCIMovie();
+    
+    
+    
 public:
     CCIMovieHeader * header;
     CCIFileAttributes * fileAttributes;
     std::vector<CCIMovieTag *> tags;
     
  //   CCDictionary * frameLabels;
+public:
+    virtual void draw();
+    bool nextFrame();
     
+private:
+    CCIDisplayList displayList_;
+    
+    
+    std::map<unsigned int, CCIDrawable*> dictionary_;
 };
 
 

@@ -9,9 +9,9 @@
 #include "CCIDefineSprite.h"
 
 
-bool CCIDefineSprite::initWithReader(CCIBufferReader *reader, int tagType, int tagLength){
-    CCIMovieTag::initWithReader(reader, tagType, tagLength);
-    
+CCIDefineSprite::CCIDefineSprite(CCIBufferReader *reader,int tagType,int tagLength)
+: CCIMovieTag(reader, tagType, tagLength)
+{
     this->spriteId = reader->readUI16();
     this->frameCount = reader->readUI16();
     
@@ -23,8 +23,6 @@ bool CCIDefineSprite::initWithReader(CCIBufferReader *reader, int tagType, int t
     if (tag) {
         controlTags.push_back(tag);
     }
-    
-    return true;
 }
 std::vector<CCIMovieTag *> CCIDefineSprite::getControlTags(){
     return this->controlTags;

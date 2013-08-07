@@ -8,15 +8,15 @@
 
 #include "CCIDefineShape.h"
 
-bool CCIDefineShape::initWithReader(CCIBufferReader *reader,int tagType,int tagLength){
-    CCIMovieTag::initWithReader(reader, tagType, tagLength);
+CCIDefineShape::CCIDefineShape(CCIBufferReader *reader,int tagType,int tagLength)
+: CCIMovieTag(reader, tagType, tagLength)
+{
     this->shapeId = reader->readUI16();
     this->shapeBounds = new CCIRect(reader);
     
     this->Shapes = new CCIShapeWithStyle(reader);
-    
-    return true;
 }
+
 CCIShapeWithStyle * CCIDefineShape::getShapes(){
     return this->Shapes;
 }

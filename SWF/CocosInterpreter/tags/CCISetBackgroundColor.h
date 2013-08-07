@@ -16,8 +16,8 @@
 
 class CCISetBackgroundColor : public CCIMovieTag{
 public:
-    virtual bool initWithReader(CCIBufferReader *reader,int tagType,int tagLength);
-    
+    CCISetBackgroundColor(CCIBufferReader *reader,int tagType,int tagLength);
+
 private:
     RGBA backgroundColor;
     

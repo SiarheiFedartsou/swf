@@ -15,7 +15,7 @@
 
 class CCIFileAttributes : public CCIMovieTag{
 public:
-    virtual bool initWithReader(CCIBufferReader *reader,int tagType,int tagLength);
+    CCIFileAttributes(CCIBufferReader *reader,int tagType,int tagLength);
 private:
     //If 1, the SWF file uses hardware acceleration to blit graphics to the screen, where such acceleration is available. If 0, the SWF file will not use hardware accelerated graphics facilities. Minimum file version is 10.
     bool useDirectBlit;

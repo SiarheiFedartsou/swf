@@ -14,7 +14,7 @@
 
 class CCIDefineShape2 : public CCIDefineShape{
 public:
-    virtual bool initWithReader(CCIBufferReader *reader,int tagType,int tagLength);
+    CCIDefineShape2(CCIBufferReader *reader,int tagType,int tagLength);
     
 public:
     

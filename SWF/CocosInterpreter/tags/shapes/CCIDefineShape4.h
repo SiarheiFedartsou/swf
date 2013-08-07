@@ -14,14 +14,18 @@
 
 #include "CCIDrawable.h"
 
-class CCIDefineShape4 :public CCIDefineShape3, public CCIDrawable{
+#include "CCICharacter.h"
+
+class CCIDefineShape4 : public CCICharacter{
 public:
-    virtual bool initWithReader(CCIBufferReader *reader,int tagType,int tagLength);
-    
+    CCIDefineShape4(CCIBufferReader *reader,int tagType,int tagLength);
 protected:
     CCIRect*    edgeBounds;
-public:
-    virtual void draw() override;
+protected:
+    UI16        shapeId;
+    CCIRect*    shapeBounds;
+    
+    CCIShapeWithStyle * Shapes;
 };
 
 

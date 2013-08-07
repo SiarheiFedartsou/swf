@@ -12,7 +12,7 @@
 
 class CCIDefineSprite : public CCIMovieTag {
 public:
-    virtual bool initWithReader(CCIBufferReader *reader,int tagType,int tagLength);
+    CCIDefineSprite(CCIBufferReader *reader,int tagType,int tagLength);
     virtual ~CCIDefineSprite();
     
     std::vector<CCIMovieTag *> getControlTags();

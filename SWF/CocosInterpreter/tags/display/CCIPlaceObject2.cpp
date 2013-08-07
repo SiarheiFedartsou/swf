@@ -10,9 +10,10 @@
 #include "CCICxformWithAlpha.h"
 
 
-bool CCIPlaceObject2::initWithReader(CCIBufferReader *reader,int tagType,int tagLength){
-    CCIMovieTag::initWithReader(reader, tagType, tagLength);
-    
+CCIPlaceObject2::CCIPlaceObject2(CCIBufferReader *reader,int tagType,int tagLength)
+: CCIMovieTag(reader, tagType, tagLength)
+{
+
     this->placeFlagHasClipActions = reader->readUBits(1);
     this->placeFlagHasClipDepth  =  reader->readUBits(1);
     this->placeFlagHasName = reader->readUBits(1);
@@ -68,9 +69,8 @@ bool CCIPlaceObject2::initWithReader(CCIBufferReader *reader,int tagType,int tag
     }else{
         this->clipActions = NULL;
     }
-
-    return true;
 }
+
 CCIPlaceObject2::~CCIPlaceObject2(){
     if (this->clipActions) {
         delete this->clipActions;

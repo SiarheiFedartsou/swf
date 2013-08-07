@@ -9,8 +9,7 @@
 #include "CCIDefineShape2.h"
 
 
-bool CCIDefineShape2::initWithReader(CCIBufferReader *reader,int tagType,int tagLength){
-    CCIDefineShape::initWithReader(reader, tagType, tagLength);
-    
-    return true;
+CCIDefineShape2::CCIDefineShape2(CCIBufferReader *reader,int tagType,int tagLength)
+: CCIDefineShape(reader, tagType, tagLength)
+{
 }

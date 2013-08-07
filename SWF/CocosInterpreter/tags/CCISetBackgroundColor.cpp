@@ -9,11 +9,10 @@
 #include "CCISetBackgroundColor.h"
 #include "CCIRGB.h"
 
-bool CCISetBackgroundColor::initWithReader(CCIBufferReader *reader, int tagType, int tagLength){
-    
-    CCIMovieTag::initWithReader(reader, tagType, tagLength);
+CCISetBackgroundColor::CCISetBackgroundColor(CCIBufferReader *reader,int tagType,int tagLength)
+: CCIMovieTag(reader, tagType, tagLength)
+{
     CCIRGB * rgb = new CCIRGB(reader);
     this->backgroundColor = rgb->getColor();
-    return true;
 }
 

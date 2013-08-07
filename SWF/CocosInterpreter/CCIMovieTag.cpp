@@ -41,11 +41,11 @@
 //#include "CCPlatformMacros.h"
 //#include "CCCommon.h"
 
-
-bool CCIMovieTag::initWithReader(CCIBufferReader *reader, int tagType, int tagLength){
+CCIMovieTag::CCIMovieTag(CCIBufferReader *reader, int tagType, int tagLength)
+{
     this->tagType = tagType;
     this->tagLength = tagLength;
-    return true;
+    
 }
 
 CCIMovieTag * CCIMovieTag::next(CCIBufferReader *reader)
@@ -61,21 +61,26 @@ CCIMovieTag * CCIMovieTag::next(CCIBufferReader *reader)
     }
     CCIMovieTag * tag = NULL;
     std::string logString;
+    
+    reader->begin(tagLength);
+    reader->tagType = tagType;
+    
+    
     switch (tagType) {
         case TagTypeFileAtrributes:
-            tag = new CCIFileAttributes();
+            tag = new CCIFileAttributes(reader, tagType, tagLength);
             logString = "CCIFileAttributes";
             break;
         case TagTypeSetBackgroundColor:
-            tag = new CCISetBackgroundColor();
+            tag = new CCISetBackgroundColor(reader, tagType, tagLength);
             logString = "CCISetBackgroundColor";
             break;
         case TagTypeEnd:
-            tag = new CCIEnd();
+            tag = new CCIEnd(reader, tagType, tagLength);
             logString = "CCIEnd";
             break;
         case TagTypeFrameLabel:
-            tag = new CCIFrameLabel();
+            tag = new CCIFrameLabel(reader, tagType, tagLength);
             logString = "CCIFrameLabel";
             break;
 //        case TagTypeDefineBitsLossless:
@@ -108,52 +113,52 @@ CCIMovieTag * CCIMovieTag::next(CCIBufferReader *reader)
 //            break;
 //         
         case TagTypePlaceObject:
-            tag = new CCIPlaceObject();
+            tag = new CCIPlaceObject(reader, tagType, tagLength);
             logString = "CCIPlaceObject";
             break;
         case TagTypePlaceObject2:
-            tag = new CCIPlaceObject2();
+            tag = new CCIPlaceObject2(reader, tagType, tagLength);
             logString = "CCIPlaceObject2";
             break;
         case TagTypePlaceObject3:
-            tag = new CCIPlaceObject3();
+            tag = new CCIPlaceObject3(reader, tagType, tagLength);
             logString = "CCIPlaceObject3";
             break;
         case TagTypeRemoveObject:
-            tag = new CCIRemoveObject();
+            tag = new CCIRemoveObject(reader, tagType, tagLength);
             logString = "CCIRemoveObject";
             break;
         case TagTypeRemoveObject2:
-            tag = new CCIRemoveObject2();
+            tag = new CCIRemoveObject2(reader, tagType, tagLength);
             logString = "CCIRemoveObject2";
             break;
         case TagTypeShowFrame:
-            tag = new CCIShowFrame();
+            tag = new CCIShowFrame(reader, tagType, tagLength);
             logString = "CCIShowFrame";
             break;
             
         case TagTypeDefineShape:
-            tag = new CCIDefineShape();
+            tag = new CCIDefineShape(reader, tagType, tagLength);
             logString = "CCIDefineShape";
             break;
         case TagTypeDefineShape2:
-            tag = new CCIDefineShape2();
+            tag = new CCIDefineShape2(reader, tagType, tagLength);
             logString = "CCIDefineShape2";
             break;
         case TagTypeDefineShape3:
-            tag = new CCIDefineShape3();
+            tag = new CCIDefineShape3(reader, tagType, tagLength);
             logString = "CCIDefineShape3";
             break;
         case TagTypeDefineShape4:
-            tag = new CCIDefineShape4();
+            tag = new CCIDefineShape4(reader, tagType, tagLength);
             logString = "CCIDefineShape4";
             break;
         case TagTypeDefineSprite:
-            tag = new CCIDefineSprite();
+            tag = new CCIDefineSprite(reader, tagType, tagLength);
             logString = "CCIDefineSprite";
             break;
         default:
-            tag = new CCIMovieTag();
+            tag = new CCIMovieTag(reader, tagType, tagLength);
             logString = "unknow tag ****************";
             std::cout << "unknow tag " << tagType << std::endl;
             
@@ -165,9 +170,7 @@ CCIMovieTag * CCIMovieTag::next(CCIBufferReader *reader)
     
     std::cout << logString << std::endl;
     
-    reader->begin(tagLength);
-    reader->tagType = tagType;
-    if (tag&&tag->initWithReader(reader, tagType, tagLength)) {
+    if (tag/*&&tag->initWithReader(reader, tagType, tagLength)*/) {
         reader->flush();
         return tag;
     }

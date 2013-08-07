@@ -11,9 +11,9 @@
 
 
 
-bool CCIPlaceObject3::initWithReader(CCIBufferReader *reader,int tagType,int tagLength){
-    CCIMovieTag::initWithReader(reader, tagType, tagLength);
-    
+CCIPlaceObject3::CCIPlaceObject3(CCIBufferReader *reader,int tagType,int tagLength)
+: CCIPlaceObject2(reader, tagType, tagLength)
+{
     reader->clearBits();
     this->placeFlagHasClipActions = reader->readUBits(1);
     this->placeFlagHasClipDepth  =  reader->readUBits(1);
@@ -102,15 +102,15 @@ bool CCIPlaceObject3::initWithReader(CCIBufferReader *reader,int tagType,int tag
     }else{
         this->clipActions = NULL;
     }
-    
-    return true;
 }
+
 CCIFilterList * CCIPlaceObject3::getFilterList(){
     if (this->placeFlagHasFilterList) {
         return this->surfaceFilterList;
     }
     return NULL;
 }
+
 CCIPlaceObject3::~CCIPlaceObject3(){
     if (this->placeFlagHasFilterList) {
         delete this->surfaceFilterList;

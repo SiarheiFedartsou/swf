@@ -20,9 +20,9 @@ enum PlaceObjectType {
     PlaceObjectTypeNew = 1,
     PlaceObjectTypeReplace = 2,
 };
-class CCIPlaceObject2 : public CCIPlaceObject{
+class CCIPlaceObject2 : public CCIMovieTag{
 public:
-    virtual bool initWithReader(CCIBufferReader *reader,int tagType,int tagLength);
+    CCIPlaceObject2(CCIBufferReader *reader,int tagType,int tagLength);
     PlaceObjectType placeType;
     virtual ~CCIPlaceObject2();
 protected:
@@ -40,6 +40,11 @@ protected:
     UI16    clipDepth;
     
     CCIClipActions * clipActions;
+protected:
+    UI16            characterId;
+    UI16            depth;
+    CCIMatrix  *    matrix;
+    CCICxform  *    colorTransform;
 };
 
 

@@ -8,8 +8,5 @@
 
 #include "CCIEnd.h"
 
-
-bool CCIEnd::initWithReader(CCIBufferReader *reader, int tagType, int tagLength){
-    CCIMovieTag::initWithReader(reader, tagType, tagLength);
-    return true;
-}
+CCIEnd::CCIEnd(CCIBufferReader *reader,int tagType,int tagLength)
+: CCIMovieTag(reader, tagType, tagLength) {}

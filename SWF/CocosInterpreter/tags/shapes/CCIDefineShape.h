@@ -12,15 +12,22 @@
 #include "CCIMovieTag.h"
 #include "CCIGeometry.h"
 #include "CCIShapeWithStyle.h"
+#include "CCIDrawable.h"
 
-class CCIDefineShape : public CCIMovieTag{
+class CCIDefineShape : public CCIMovieTag, public CCIDrawable {
 public:
-    virtual bool initWithReader(CCIBufferReader *reader,int tagType,int tagLength);
+    CCIDefineShape(CCIBufferReader *reader,int tagType,int tagLength);
     CCIShapeWithStyle * getShapes();
     int    getShapeId();
     CCIRect * getBounds();
     
     virtual ~CCIDefineShape();
+    
+    
+    virtual bool isCharacter() { return true; };
+    
+    virtual void draw() {};
+    
 protected:
     UI16        shapeId;
     CCIRect*    shapeBounds;

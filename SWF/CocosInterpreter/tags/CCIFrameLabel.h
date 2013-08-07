@@ -16,7 +16,7 @@
 
 class CCIFrameLabel : public CCIMovieTag{
 public:
-    virtual bool initWithReader(CCIBufferReader *reader,int tagType,int tagLength);
+    CCIFrameLabel(CCIBufferReader *reader,int tagType,int tagLength);
     std::string getName();
 private:
     std::string name;

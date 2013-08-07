@@ -22,6 +22,8 @@
 		132917F917A98A6900DDC24B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 132917F817A98A6900DDC24B /* QuartzCore.framework */; };
 		132917FB17A98A7300DDC24B /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 132917FA17A98A7300DDC24B /* libz.dylib */; };
 		132917FE17A98B3200DDC24B /* CCTest.mm in Sources */ = {isa = PBXBuildFile; fileRef = 132917FD17A98B3200DDC24B /* CCTest.mm */; };
+		1372C71417B0231800C2547E /* CCIDisplayList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1372C71217B0231800C2547E /* CCIDisplayList.cpp */; };
+		1372C71817B029B500C2547E /* CCICharacter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1372C71617B029B500C2547E /* CCICharacter.cpp */; };
 		1377B60117AB1559000EC601 /* test.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 1377B60017AB1559000EC601 /* test.jpeg */; };
 		1377B69417AB1C29000EC601 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 1377B61017AB1C28000EC601 /* README.md */; };
 		1377B6CD17AB1FE3000EC601 /* CCISWFDecoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1377B60D17AB1C28000EC601 /* CCISWFDecoder.cpp */; };
@@ -134,6 +136,10 @@
 		132917FA17A98A7300DDC24B /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		132917FC17A98B3200DDC24B /* CCTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTest.h; sourceTree = "<group>"; };
 		132917FD17A98B3200DDC24B /* CCTest.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CCTest.mm; sourceTree = "<group>"; };
+		1372C71217B0231800C2547E /* CCIDisplayList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCIDisplayList.cpp; sourceTree = "<group>"; };
+		1372C71317B0231800C2547E /* CCIDisplayList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCIDisplayList.h; sourceTree = "<group>"; };
+		1372C71617B029B500C2547E /* CCICharacter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCICharacter.cpp; sourceTree = "<group>"; };
+		1372C71717B029B500C2547E /* CCICharacter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCICharacter.h; sourceTree = "<group>"; };
 		1377B60017AB1559000EC601 /* test.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test.jpeg; sourceTree = "<group>"; };
 		1377B60317AB1C28000EC601 /* CCIBufferReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCIBufferReader.cpp; sourceTree = "<group>"; };
 		1377B60417AB1C28000EC601 /* CCIBufferReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCIBufferReader.h; sourceTree = "<group>"; };
@@ -382,6 +388,10 @@
 				1377B60F17AB1C28000EC601 /* CCITypes.h */,
 				1377B61017AB1C28000EC601 /* README.md */,
 				1377B7C317AC48F3000EC601 /* CCIDrawable.h */,
+				1372C71217B0231800C2547E /* CCIDisplayList.cpp */,
+				1372C71317B0231800C2547E /* CCIDisplayList.h */,
+				1372C71617B029B500C2547E /* CCICharacter.cpp */,
+				1372C71717B029B500C2547E /* CCICharacter.h */,
 			);
 			path = CocosInterpreter;
 			sourceTree = "<group>";
@@ -764,6 +774,8 @@
 				1377B7BE17AC40D2000EC601 /* CCIMovieHeader.cpp in Sources */,
 				1377B7BF17AC40E0000EC601 /* CCIMovie.cpp in Sources */,
 				1377B7C217AC4524000EC601 /* CCIDefineSprite.cpp in Sources */,
+				1372C71417B0231800C2547E /* CCIDisplayList.cpp in Sources */,
+				1372C71817B029B500C2547E /* CCICharacter.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,7 +14,7 @@
 
 class CCIRemoveObject : public CCIMovieTag{
 public:
-    virtual bool initWithReader(CCIBufferReader *reader,int tagType,int tagLength);
+    CCIRemoveObject(CCIBufferReader *reader,int tagType,int tagLength);
     UI16    getDepth();
 protected:
     UI16    characterId;

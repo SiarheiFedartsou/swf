@@ -18,7 +18,8 @@
 
 class CCIPlaceObject : public CCIMovieTag{
 public:
-    virtual bool initWithReader(CCIBufferReader *reader,int tagType,int tagLength);
+    CCIPlaceObject(CCIBufferReader *reader,int tagType,int tagLength);
+    
     UI16 getCharacterId();
     CCIMatrix * getMatrix();
     CCICxform * getColorTransform();

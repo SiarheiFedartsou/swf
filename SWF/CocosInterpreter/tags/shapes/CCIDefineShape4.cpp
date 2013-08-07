@@ -10,10 +10,9 @@
 #import <MonkVG/openvg.h>
 #import <MonkVG/vgext.h>
 
-bool CCIDefineShape4::initWithReader(CCIBufferReader *reader,int tagType,int tagLength){
-   // CCIDefineShape3::initWithReader(reader, tagType, tagLength);
-    CCIMovieTag::initWithReader(reader, tagType, tagLength);
-    this->shapeId = reader->readUI16();
+CCIDefineShape4::CCIDefineShape4(CCIBufferReader *reader,int tagType,int tagLength)
+: CCICharacter(reader, tagType, tagLength)
+{
     this->shapeBounds = new CCIRect(reader);
     this->edgeBounds = new CCIRect(reader);
     
@@ -21,12 +20,9 @@ bool CCIDefineShape4::initWithReader(CCIBufferReader *reader,int tagType,int tag
     
     this->Shapes = new CCIShapeWithStyle(reader);
     
-    
-    
-    return true;
 }
 
-
+/*
 void CCIDefineShape4::draw()
 {
     VGPath _path2 = vgCreatePath(VG_PATH_FORMAT_STANDARD, VG_PATH_DATATYPE_F,1,0,0,0, VG_PATH_CAPABILITY_ALL);
@@ -50,4 +46,4 @@ void CCIDefineShape4::draw()
     
 
     vgLoadMatrix(x);
-}
+}*/

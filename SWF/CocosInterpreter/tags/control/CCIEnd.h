@@ -11,8 +11,8 @@
 #include "CCIMovieTag.h"
 
 class CCIEnd :public CCIMovieTag {
-    virtual bool initWithReader(CCIBufferReader *reader,int tagType,int tagLength);
-    
+public:
+    CCIEnd(CCIBufferReader *reader,int tagType,int tagLength);    
 public:
     
 };

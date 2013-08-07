@@ -8,22 +8,21 @@
 
 #include "CCIPlaceObject.h"
 
-
-bool CCIPlaceObject::initWithReader(CCIBufferReader *reader,int tagType,int tagLength){
-    CCIMovieTag::initWithReader(reader, tagType, tagLength);
-    
+CCIPlaceObject::CCIPlaceObject(CCIBufferReader *reader,int tagType,int tagLength)
+: CCIMovieTag(reader, tagType, tagLength)
+{
     this->characterId =  reader->readUI16();
     this->depth = reader->readUI16();
     
     this->matrix = new CCIMatrix(reader);
-
+    
     if (!reader->isTagFinished()) {
         this->colorTransform = new CCICxform(reader);
     }else{
         this->colorTransform = NULL;
     }
-    return true;
 }
+
 UI16 CCIPlaceObject::getCharacterId(){
     return this->characterId;
 }

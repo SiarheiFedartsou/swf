@@ -17,12 +17,13 @@
 
 
 //static CCDictionary * movies = NULL;
-CCIMovie * CCIMovie::decodeFromFile(std::string filename){
+CCIMovie::CCIMovie(std::string filename)
+{
     
   //  if (!movies) {
        // movies = new CCDictionary();
   //  }
-    CCIMovie * movie = /*(CCIMovie *)movies->objectForKey(filename)*/NULL;
+//    CCIMovie * movie = /*(CCIMovie *)movies->objectForKey(filename)*/NULL;
     //if (movie) {
     //    return movie;
     //}
@@ -50,29 +51,26 @@ CCIMovie * CCIMovie::decodeFromFile(std::string filename){
     if (fileSize < 0)
     {
         delete[] swfdata;
-        return NULL;
     }
     
     
     CCIBufferReader bufferReader;
     bufferReader.setData(swfdata, fileSize);
     delete[] swfdata;
-    
-    
-    movie = new CCIMovie();
+
    // movie->frameLabels = CCDictionary::create();
    // movie->frameLabels->retain();
-    movie->header = CCIMovieHeader::create(&bufferReader);
+    header = CCIMovieHeader::create(&bufferReader);
     
-    bufferReader.version = movie->header->getVersion();
+    bufferReader.version = header->getVersion();
     
-    if (movie->header->getVersion()>=8) {
-        movie->fileAttributes = (CCIFileAttributes *)CCIMovieTag::next(&bufferReader);
+    if (header->getVersion()>=8) {
+        fileAttributes = (CCIFileAttributes *)CCIMovieTag::next(&bufferReader);
     }
     CCIMovieTag * tag = CCIMovieTag::next(&bufferReader);
     int tagIndex = 0;
     while (tag) {
-        movie->tags.push_back(tag);
+        tags.push_back(tag);
         tag = CCIMovieTag::next(&bufferReader);
         tagIndex++;
         
@@ -86,14 +84,41 @@ CCIMovie * CCIMovie::decodeFromFile(std::string filename){
     
   //  movies->setObject(movie,filename);
    // movie->release();
-    return movie;
+   // return movie;
 }
+
 std::vector<CCIMovieTag *> CCIMovie::getTags(){
     return this->tags;
 }
+
 CCIMovieHeader * CCIMovie::getHeader(){
     return this->header;
 }
+
+bool CCIMovie::nextFrame()
+{
+    for (auto itr = this->tags.begin(); itr != this->tags.end(); ++itr) {
+        CCIMovieTag* tag = *itr;
+        
+        if (tag->getTagType() == TagTypeShowFrame)
+            break;
+        
+        
+        if (tag->getTagType() == TagTypePlaceObject
+            ||
+            tag->getTagType() == TagTypePlaceObject2
+            ||
+            tag->getTagType() == TagTypePlaceObject3) {
+            displayList_.placeObject(NULL, (CCIPlaceObject*)tag);
+        }
+    }
+}
+
+void CCIMovie::draw()
+{
+    
+}
+
 //CCDictionary * CCIMovie::getFrameLabels(){
 //    return this->frameLabels;
 //}

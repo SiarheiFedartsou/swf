@@ -8,10 +8,9 @@
 
 #include "CCIFileAttributes.h"
 
-bool CCIFileAttributes::initWithReader(CCIBufferReader *reader, int tagType, int tagLength){
-    
-    CCIMovieTag::initWithReader(reader, tagType, tagLength);
-    
+CCIFileAttributes::CCIFileAttributes(CCIBufferReader *reader,int tagType,int tagLength)
+: CCIMovieTag(reader, tagType, tagLength)
+{
     this->useDirectBlit = reader->readUBits(1)==1;
     
     reader->readUBits(1);
@@ -25,7 +24,5 @@ bool CCIFileAttributes::initWithReader(CCIBufferReader *reader, int tagType, int
     this->useNetwork = reader->readUBits(1)==1;
     //剩下跳过
     reader->skipBytes(tagLength-1);
-    return true;
 }
-
 

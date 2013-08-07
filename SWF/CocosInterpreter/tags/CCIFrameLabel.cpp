@@ -8,14 +8,12 @@
 
 #include "CCIFrameLabel.h"
 
-bool CCIFrameLabel::initWithReader(CCIBufferReader *reader, int tagType, int tagLength){
-    
-    CCIMovieTag::initWithReader(reader, tagType, tagLength);
-    
+CCIFrameLabel::CCIFrameLabel(CCIBufferReader *reader, int tagType, int tagLength) :
+    CCIMovieTag(reader, tagType, tagLength)
+{
     this->name = reader->readString();
-    
-    return true;
 }
+
 std::string CCIFrameLabel::getName(){
     return this->name;
 }
