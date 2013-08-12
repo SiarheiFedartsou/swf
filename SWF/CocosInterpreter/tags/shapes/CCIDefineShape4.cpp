@@ -7,8 +7,7 @@
 //
 
 #include "CCIDefineShape4.h"
-#import <MonkVG/openvg.h>
-#import <MonkVG/vgext.h>
+
 
 CCIDefineShape4::CCIDefineShape4(CCIBufferReader *reader,int tagType,int tagLength)
 : CCICharacter(reader, tagType, tagLength)

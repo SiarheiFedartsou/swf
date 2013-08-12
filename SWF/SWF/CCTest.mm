@@ -17,6 +17,13 @@
 #include "CCIMovie.h"
 #include "CCIDefineShape4.h"
 
+@interface CCSWFDisplayList : NSObject
+{
+    std::vector<CCIPlaceObject*> placeObjects_;
+}
+
+@end
+
 @interface VG : CCNode
 
 @end

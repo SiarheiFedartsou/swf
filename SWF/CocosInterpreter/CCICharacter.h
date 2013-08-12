@@ -10,13 +10,19 @@
 #define __SWF__CCICharacter__
 
 #include "CCIMovieTag.h"
+#include "CCIDrawable.h"
 
-class CCICharacter : public CCIMovieTag
+class CCICharacter : public CCIMovieTag, public CCIDrawable
 {
 public:
     CCICharacter(CCIBufferReader *reader,int tagType,int tagLength);
+    
+    UI16 getCharacterId() { return characterId_; }
+    
+    virtual void  draw() {};
+    
 protected:
-    UI16        shapeId;
+    UI16        characterId_;
    
 };
 

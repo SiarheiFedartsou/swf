@@ -11,5 +11,5 @@
 CCICharacter::CCICharacter(CCIBufferReader *reader,int tagType,int tagLength)
 : CCIMovieTag(reader, tagType, tagLength)
 {
-    this->shapeId = reader->readUI16();
+    this->characterId_ = reader->readUI16();
 }

@@ -111,7 +111,15 @@ bool CCIMovie::nextFrame()
             tag->getTagType() == TagTypePlaceObject3) {
             displayList_.placeObject(NULL, (CCIPlaceObject*)tag);
         }
+        if (tag->getTagType() == TagTypeRemoveObject
+            ||
+            tag->getTagType() == TagTypeRemoveObject2)
+        {
+            displayList_.removeObject((CCIRemoveObject*)tag);
+        }
     }
+    
+    return false;
 }
 
 void CCIMovie::draw()

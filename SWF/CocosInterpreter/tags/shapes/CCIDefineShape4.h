@@ -12,11 +12,9 @@
 
 #include "CCIDefineShape3.h"
 
-#include "CCIDrawable.h"
-
 #include "CCICharacter.h"
 
-class CCIDefineShape4 : public CCICharacter{
+class CCIDefineShape4 : public CCICharacter {
 public:
     CCIDefineShape4(CCIBufferReader *reader,int tagType,int tagLength);
 protected:
